@@ -46,7 +46,7 @@ public class CandidateRepositoryTest extends AbstractTest {
 
     @Transactional
     @Test
-    public void should_have_save_correct_candidate() {
+    public void deve_salvar_corretamente_um_candidato() {
         Credential candidateCredentials = new Credential();
         candidateCredentials.setUsername("candidate@candidate.com");
         candidateCredentials.setPassword("65e84be33532fb784c48129675f9eff3a682b27168c0ea744b2cf58ee02337c5");
@@ -69,7 +69,7 @@ public class CandidateRepositoryTest extends AbstractTest {
     }
 
     @Test
-    public void should_have_correct_candidate_by_credentials() {
+    public void deve_retornar_corretamente_umca_candidato_pela_credentials() {
         CandidateRepository repository = new CandidateRepository();
 
         Credential credential = em.find(Credential.class, "marcus@candidate.com.br");

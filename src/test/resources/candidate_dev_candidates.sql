@@ -1,1 +1,1 @@
-INSERT INTO candidates (name, credentials_username) VALUES ('marcus', 'marcus@candidate.com.br');
+INSERT INTO candidates (name, credential_username) VALUES ('marcus', 'marcus@candidate.com.br');

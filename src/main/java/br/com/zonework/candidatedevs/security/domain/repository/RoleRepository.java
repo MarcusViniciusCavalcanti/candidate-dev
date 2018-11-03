@@ -13,7 +13,7 @@ import java.util.Optional;
 public class RoleRepository {
     private EntityManager entityManager;
     public RoleRepository() {
-        this.entityManager = JPAUtils.entityManager();
+        this.entityManager = JPAUtils.entityManager("candidate");
     }
 
     public List<Role> findByCredentials(Credential credential) {

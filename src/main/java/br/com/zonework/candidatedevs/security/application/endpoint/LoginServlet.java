@@ -41,12 +41,9 @@ public class LoginServlet extends HttpServlet {
 
             SecurityService securityService = new SecurityService();
             Credential credential = securityService.getCredentialWith(username);
-            HttpSession session = req.getSession();
 
-            if (session.isNew()) {
-                session.setAttribute("credentials", credential);
-                req.getRequestDispatcher("/dashboard").forward(req, resp);
-            }
+            HttpSession session = req.getSession();
+            session.setAttribute("credentials", credential);
         } catch (ServletException | LoginException e) {
             req.setAttribute("loginFailure", "Usuário ou senha não corresponde");
             doGet(req, resp);
