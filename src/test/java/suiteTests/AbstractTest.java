@@ -18,7 +18,8 @@ public class AbstractTest {
 
     @AfterClass
     public static void tearDown(){
-        em.clear();
-        em.close();
+//        em.clear();
+//        em.close();
+//        JPAUtils.closeEntityFactory();
     }
 }

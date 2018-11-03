@@ -1,4 +1,4 @@
-<jsp:useBean id="credentials" scope="session" class="br.com.zonework.security.domain.entity.Credential"/>
+<jsp:useBean id="credentials" scope="session" class="br.com.zonework.candidatedevs.security.domain.entity.Credential"/>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>

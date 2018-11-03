@@ -5,16 +5,18 @@
 <%@ taglib prefix="h" tagdir="/WEB-INF/tags" %>
 
 <%@ attribute name="title" type="java.lang.String" %>
+<%@ attribute name="bean" type="br.com.zonework.candidatedevs.candidate.domain.entity.Candidate" %>
 
 <h:head title="${title}">
     <jsp:body>
+
         <body class="nav-md">
         <div class="container body">
             <div class="main_container">
                 <div class="col-md-3 left_col">
                     <div class="left_col scroll-view">
                         <div class="navbar nav_title" style="border: 0;">
-                            <a href="${pageContext.request.contextPath}/dashboard" class="site_title">
+                            <a href="${pageContext.request.contextPath}/protected/candidate/dashboard" class="site_title">
                                 <i class="fa fa-paw"></i>
                                 <span>Candidate Dev</span>
                             </a>
@@ -30,7 +32,7 @@
                             </div>
                             <div class="profile_info">
                                 <span>Welcome,</span>
-                                <h2>John Doe</h2>
+                                <h2>${bean.name}</h2>
                             </div>
                         </div>
 
@@ -43,25 +45,9 @@
                     </div>
                 </div>
 
-                <h:topbar credentials="${credentials}"/>
+                <h:topbar credentials="${credentials}" candidate="${bean}"/>
 
-                <div class="right_col" role="main">
-                    <div class="row">
-                        <div class="col-md-12 col-sm-12 col-xs-12">
-                            <div class="x_panel">
-                                <div class="x_title">
-                                    <h2>${title}</h2>
-
-                                    <div class="clearfix"></div>
-                                </div>
-                            </div>
-
-                            <div class="x_content">
-                                <jsp:doBody/>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <jsp:doBody/>
 
                 <footer>
                     <div class="pull-right">
@@ -82,8 +68,7 @@
         <script src="${pageContext.request.contextPath}/assets/vendor/jquery-sparkline/dist/jquery.sparkline.js"></script>
         <script src="${pageContext.request.contextPath}/assets/vendor/nprogress/nprogress.js"></script>
         <script src="${pageContext.request.contextPath}/assets/vendor/pnotify/dist/pnotify.js"></script>
-        <script src="${pageContext.request.contextPath}/assets/js/notify_message"></script>
-        <script src="${pageContext.request.contextPath}/assets/js/custom.js"></script>
+        <script src="${pageContext.request.contextPath}/assets/js/notify_message.js"></script>
 
         <script src="${pageContext.request.contextPath}/assets/vendor/datatables.net/js/jquery.dataTables.min.js"></script>
         <script src="${pageContext.request.contextPath}/assets/vendor/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
@@ -97,6 +82,8 @@
         <script src="${pageContext.request.contextPath}/assets/vendor/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
         <script src="${pageContext.request.contextPath}/assets/vendor/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
         <script src="${pageContext.request.contextPath}/assets/vendor/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+
+        <script src="${pageContext.request.contextPath}/assets/js/custom.js"></script>
         </body>
     </jsp:body>
 </h:head>

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = "/candidate/dashboard")
+@WebServlet(urlPatterns = "/protected/candidate/dashboard")
 public class DashboardCandidateServlet extends HttpServlet {
     private CandidateService service;
 
@@ -25,7 +25,7 @@ public class DashboardCandidateServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Credential credential = (Credential) req.getSession().getAttribute("credentials");
         Candidate candidate = service.getCandidateFromCredentials(credential);
-        req.setAttribute("candidate", candidate);
+        req.getSession().setAttribute("candidate", candidate);
         Render.view(req, resp, "/candidate/dashboard");
     }
 
