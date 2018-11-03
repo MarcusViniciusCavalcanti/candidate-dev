@@ -2,22 +2,28 @@ package br.com.zonework.candidatedevs.candidate.domain.entity;
 
 import br.com.zonework.candidatedevs.security.domain.entity.Credential;
 import br.com.zonework.candidatedevs.structure.JPA.EntityApplication;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.time.LocalDate;
 
-@Entity
 @Table(name = "candidates")
+@Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Candidate extends EntityApplication {
-    @ManyToOne
-    private Credential credentials;
+    @Column private String name;
+    @Column private LocalDate birthday;
 
-    public void setCredentials(Credential credentials) {
-        this.credentials = credentials;
-    }
-
-    public Credential getCredentials() {
-        return credentials;
-    }
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @Fetch(FetchMode.JOIN)
+    private Credential credential;
 }
+
