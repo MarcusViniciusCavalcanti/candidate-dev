@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @MappedSuperclass
-public class EntityApplication implements Serializable {
+public class ObjectPersistence implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected long id;
@@ -25,7 +25,7 @@ public class EntityApplication implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        EntityApplication that = (EntityApplication) o;
+        ObjectPersistence that = (ObjectPersistence) o;
         return id == that.id;
     }
 

@@ -1,11 +1,11 @@
 package br.com.zonework.candidatedevs.structure.utils;
 
 
-import br.com.zonework.candidatedevs.structure.JPA.EntityApplication;
+import br.com.zonework.candidatedevs.structure.JPA.ObjectPersistence;
 
 import java.util.List;
 
-public class TableContent<E extends EntityApplication> {
+public class TableContent<E extends ObjectPersistence> {
     private List<String> headers;
     private List<E> content;
 

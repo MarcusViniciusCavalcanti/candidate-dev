@@ -1,7 +1,5 @@
 package br.com.zonework.candidatedevs.structure.JPA;
 
-import br.com.zonework.candidatedevs.security.domain.entity.Credential;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -12,7 +10,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
-public class Repository<T extends EntityApplication> {
+public class Repository<T extends ObjectPersistence> {
     @PersistenceContext
     protected EntityManager entityManager = JPAUtils.entityManager("candidate");
     private Class<T> entityClass;
