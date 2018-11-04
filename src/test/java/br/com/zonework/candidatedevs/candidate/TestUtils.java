@@ -14,11 +14,18 @@ public class TestUtils {
         Session session = em.unwrap(Session.class);
         session.doWork(connection -> {
             try {
+
+                File createProvince = new File(CredentialsRepositoryTest.class.getResource("/candidate_dev_province.sql").getFile());
+                File createCity = new File(CredentialsRepositoryTest.class.getResource("/candidate_dev_city.sql").getFile());
+                File createContacts = new File(CredentialsRepositoryTest.class.getResource("/candidate_dev_contacts.sql").getFile());
                 File createCandidate = new File(CredentialsRepositoryTest.class.getResource("/candidate_dev_candidates.sql").getFile());
                 File createCredentials = new File(CredentialsRepositoryTest.class.getResource("/candidate_dev_credentials.sql").getFile());
 
                 RunScript.execute(connection, new FileReader(createCredentials));
                 RunScript.execute(connection, new FileReader(createCandidate));
+                RunScript.execute(connection, new FileReader(createProvince));
+                RunScript.execute(connection, new FileReader(createCity));
+                RunScript.execute(connection, new FileReader(createContacts));
             } catch (FileNotFoundException e) {
                 throw new RuntimeException("could not initialize with script");
             }

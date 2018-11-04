@@ -1,6 +1,7 @@
 package br.com.zonework.candidatedevs.candidate.domain.repository;
 
 import br.com.zonework.candidatedevs.candidate.domain.entity.Candidate;
+import br.com.zonework.candidatedevs.candidate.domain.entity.Contact;
 import br.com.zonework.candidatedevs.security.domain.entity.Credential;
 import br.com.zonework.candidatedevs.security.domain.entity.Role;
 import br.com.zonework.candidatedevs.security.domain.repository.CredentialsRepositoryTest;

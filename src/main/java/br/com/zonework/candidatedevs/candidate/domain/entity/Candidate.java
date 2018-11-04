@@ -1,7 +1,7 @@
 package br.com.zonework.candidatedevs.candidate.domain.entity;
 
 import br.com.zonework.candidatedevs.security.domain.entity.Credential;
-import br.com.zonework.candidatedevs.structure.JPA.EntityApplication;
+import br.com.zonework.candidatedevs.structure.JPA.ObjectPersistence;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,12 +18,26 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Candidate extends EntityApplication {
+public class Candidate extends ObjectPersistence {
     @Column private String name;
     @Column private LocalDate birthday;
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @Fetch(FetchMode.JOIN)
     private Credential credential;
+
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @Fetch(FetchMode.JOIN)
+    private Contact contact;
+
+    public String fullAddress() {
+        if (contact == null) {
+            return "";
+        }
+
+        return contact.getStreet() + ", " +
+                contact.getCity().getName() + ", " +
+                contact.getCity().getProvince().getUf();
+    }
 }
 
