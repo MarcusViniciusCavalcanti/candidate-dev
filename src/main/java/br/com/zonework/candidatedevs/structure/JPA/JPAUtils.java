@@ -6,13 +6,18 @@ import javax.persistence.Persistence;
 
 public class JPAUtils {
     private static EntityManager entityManager;
+    private static EntityManagerFactory entityManagerFactory;
 
-    public static EntityManager entityManager() {
+    public static EntityManager entityManager(String persistenceName) {
 
         if (entityManager == null) {
-            EntityManagerFactory factory = Persistence.createEntityManagerFactory("candidate");
-            entityManager = factory.createEntityManager();
+            entityManagerFactory = Persistence.createEntityManagerFactory(persistenceName);
+            entityManager = entityManagerFactory.createEntityManager();
         }
         return entityManager;
+    }
+
+    public static void closeEntityFactory() {
+        entityManagerFactory.close();
     }
 }

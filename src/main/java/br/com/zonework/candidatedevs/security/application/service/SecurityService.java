@@ -6,6 +6,7 @@ import br.com.zonework.candidatedevs.security.domain.repository.CredentialsRepos
 import br.com.zonework.candidatedevs.security.domain.repository.RoleRepository;
 
 import javax.security.auth.login.LoginException;
+import javax.transaction.Transactional;
 import java.util.Arrays;
 import java.util.Optional;
 import java.util.Set;
@@ -49,5 +50,11 @@ public class SecurityService {
 //        repository.save(credential);
 
         return null;
+    }
+
+    @Transactional
+    public void createCredentialsFor(Credential credentials) {
+        CredentialsRepository credentialsRepository = new CredentialsRepository();
+        credentialsRepository.save(credentials);
     }
 }

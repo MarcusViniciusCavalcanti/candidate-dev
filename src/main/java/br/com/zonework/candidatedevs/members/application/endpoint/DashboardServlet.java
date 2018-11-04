@@ -1,5 +1,7 @@
 package br.com.zonework.candidatedevs.members.application.endpoint;
 
+import br.com.zonework.candidatedevs.structure.Render;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,6 +14,6 @@ public class DashboardServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        Render.view(req, resp, "members/dashboard");
     }
 }

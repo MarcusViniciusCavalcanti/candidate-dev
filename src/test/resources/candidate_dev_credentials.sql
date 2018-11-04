@@ -1,0 +1,4 @@
+INSERT INTO credentials (username, password, isLocked) VALUES ('marcus@admin.com.br', '65e84be33532fb784c48129675f9eff3a682b27168c0ea744b2cf58ee02337c5', false);
+INSERT INTO credentials (username, password, isLocked) VALUES ('marcus@candidate.com.br', '65e84be33532fb784c48129675f9eff3a682b27168c0ea744b2cf58ee02337c5', false);
+INSERT INTO credentials (username, password, isLocked) VALUES ('marcus@editor.com.br', '65e84be33532fb784c48129675f9eff3a682b27168c0ea744b2cf58ee02337c5', false);
+INSERT INTO credentials (username, password, isLocked) VALUES ('marcus@review.com.br', '65e84be33532fb784c48129675f9eff3a682b27168c0ea744b2cf58ee02337c5', false);

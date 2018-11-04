@@ -11,6 +11,11 @@
     </error-page>
 
     <error-page>
+        <error-code>403</error-code>
+        <location>/WEB-INF/views/errors/403.jsp</location>
+    </error-page>
+
+    <error-page>
         <exception-type>javax.security.auth.login.LoginException</exception-type>
         <location>/WEB-INF/views/security/form-login.jsp</location>
     </error-page>

@@ -16,7 +16,7 @@ public class CredentialsRepository  {
     private EntityManager entityManager;
 
     public CredentialsRepository(){
-        entityManager = JPAUtils.entityManager();
+        entityManager = JPAUtils.entityManager("candidate");
     }
 
     public Optional<Credential> findByName(String username) {
@@ -39,10 +39,14 @@ public class CredentialsRepository  {
     }
 
     public void save(Credential credential) {
-        entityManager.getTransaction().begin();
 
-        entityManager.persist(credential);
+        if (entityManager.getTransaction().isActive()) {
+            entityManager.persist(credential);
+        } else {
+            entityManager.getTransaction().begin();
+            entityManager.persist(credential);
+            entityManager.getTransaction().commit();
+        }
 
-        entityManager.getTransaction().commit();
     }
 }

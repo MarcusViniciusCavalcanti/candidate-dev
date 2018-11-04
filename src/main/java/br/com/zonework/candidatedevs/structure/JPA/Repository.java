@@ -1,5 +1,7 @@
 package br.com.zonework.candidatedevs.structure.JPA;
 
+import br.com.zonework.candidatedevs.security.domain.entity.Credential;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -12,7 +14,7 @@ import java.util.Optional;
 
 public class Repository<T extends EntityApplication> {
     @PersistenceContext
-    protected EntityManager entityManager = JPAUtils.entityManager();
+    protected EntityManager entityManager = JPAUtils.entityManager("candidate");
     private Class<T> entityClass;
 
     public Repository(Class<T> entityClass) {
@@ -23,7 +25,7 @@ public class Repository<T extends EntityApplication> {
 
         try {
             entityManager.getTransaction().begin();
-            entityManager.persist(entity);
+            entityManager.merge(entity);
             entityManager.getTransaction().commit();
             return Optional.of(entity);
         } catch (Exception e) {

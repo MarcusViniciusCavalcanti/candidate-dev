@@ -5,6 +5,7 @@ import br.com.zonework.candidatedevs.security.application.service.SecurityServic
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.security.Principal;
 
@@ -22,6 +23,20 @@ public class SecurityCredentialsFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         chain.doFilter(request, response);
         HttpServletRequest req = (HttpServletRequest) request;
+
+        boolean isCandidate = req.isUserInRole("candidate");
+        if (isCandidate) {
+            ((HttpServletResponse)response).sendRedirect("/protected/candidate/dashboard");
+            return;
+        }
+
+        boolean isAdmin = req.isUserInRole("admin");
+
+        if (isAdmin) {
+            ((HttpServletResponse)response).sendRedirect("/protected/members/dashboard");
+            return;
+        }
+
     }
 
     @Override

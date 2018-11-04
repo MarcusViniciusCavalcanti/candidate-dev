@@ -7,7 +7,6 @@ import java.util.Set;
 @Entity
 @Table(name = "credentials")
 public class Credential implements Serializable {
-
     @Id
     @Column private String username;
     @Column private String password;
