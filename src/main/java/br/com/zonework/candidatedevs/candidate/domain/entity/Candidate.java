@@ -21,6 +21,11 @@ import java.time.LocalDate;
 public class Candidate extends ObjectPersistence {
     @Column private String name;
     @Column private LocalDate birthday;
+    @Column private String office;
+    @Column private int webApplicationAccuracy;
+    @Column private int websiteDesignAccuracy;
+    @Column private int testAccuracy;
+    @Column private int uiUixAccuracy;
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @Fetch(FetchMode.JOIN)
